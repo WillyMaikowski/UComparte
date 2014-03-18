@@ -1,0 +1,114 @@
+<style>
+.file-list tbody tr td {
+	padding-bottom: 0;
+}
+</style>
+<div class="row">
+	<div class="col-md-2">
+	</div>
+	<div class="col-md-8 key">
+		<div class="row text-center" style="margin-bottom:20px;">
+			<form class="col-md-8 col-md-offset-2 dragdrop" action="" method="POST" enctype="multipart/form-data" style="border: 2px dotted lightGrey;">
+				<input type="hidden" name="MAX_FILE_SIZE" value="{$max_file_size}"/>
+				<input type="file" class="hidden" id="fileselect" name="fileselect[]" multiple="multiple"/>
+				<p style="margin: 20px auto;">
+					Arrastra los ficheros en la ventana o haz click <a href="#" onclick="doClick( event, '#fileselect' )">aqui</a>
+				</p>
+			</form>
+		</div>
+		<div class="row">		
+
+			<table class="table table-hover table-condensed file-list">
+			<thead>
+				<tr>
+					<th></th>
+					<th>Nombre</th>
+					<th>Tamaño</th>
+					<th>Usuario</th>
+					<th class="text-right">Opciones</th>
+				</tr>
+			</thead>
+			<tbody>
+<!-- if( $archivos ) { -->
+	<!-- foreach( $archivos as $k => $v ) { -->
+		<!-- $ultimoPunto = mb_strrpos( $v['titulo'], '.' ); -->
+		<!-- $fileName = mb_strlen( mb_substr( $v['titulo'], 0, $ultimoPunto ) ) > 35 ? mb_substr( $v['titulo'], 0, 35 ).'.'.$v['ext']:$v['titulo']; -->
+		        	<tr id="tr-{$v['fecha']}-{$v['id']}">
+					<td rowspan="2" style="max-width: 30px;">
+						<div class="file-type-icon pull-right">
+							<span class="corner"></span>
+							<span class="type {mb_strtolower( $v['ext'] )}">{{mb_strtolower( $v['ext'] )}}</span>
+						</div>
+					</td>
+					<td style="max-width:60%;"><a href="archivo?id={$v['id']}">{{$fileName}}</a></td>
+					<td>{{$v['tamano']}}</td>
+					<td>{{$v['usu_alias']}}</td>
+					<td>
+						<ul class="list-group list-inline text-right" style="margin-bottom:0;">
+							<li><a href="#" title="Tags" onclick="displayTags( {$v['fecha']}, {$v['id']} )"><span class="glyphicon glyphicon-tags"></span></a></li>
+							<li><a href="#" title="Eliminar" onclick="fileRemove( {$v['fecha']}, {$v['id']}, {$_SESSION['id']} )"><span class="glyphicon glyphicon-trash"></span></a></li>
+							<li><a href="descargar?id={$v['id']}" title="Bajar"><span class="glyphicon glyphicon-download"></span></a></li>
+						</ul>
+					</td>
+		        	</tr>
+				<tr id="tr-tags-{$v['fecha']}-{$v['id']}">
+					<td colspan="4" style="padding:0;border:none;">
+						<ul class="list-group list-inline" style="margin-bottom:0px;">
+		<!-- foreach( $v['tags'] as $number => $tag ) {-->
+							<li class="label label-danger">
+								<span data-cat="{{trim( substr( $tag, 0, strrpos( $tag, ":" ) ) )}}">
+									{{trim( substr( $tag, strrpos( $tag, ":" ) === FALSE ? 0 : strrpos( $tag, ":" )+1 ) )}}
+								</span>
+							</li>
+		<!-- } -->
+						</ul>		
+					</td>
+				</tr>
+	<!-- } -->
+<!-- } -->
+			</tbody>
+			</table>
+		</div>
+	</div>
+	<div class="col-md-2">
+	</div>
+</div>
+
+<!-- if( $pMax > 1 ) { -->
+<form action="uploads" method="post" class="row text-center">
+	<ul class="pagination pagination-sm" style="margin-top:0;">
+	<!-- if( $p > 1 ) { -->
+		<li><a href="#" onclick="clickPagination( event, {$p-1} )"><span class="glyphicon glyphicon-arrow-left"></span></a></li>
+	<!-- } -->
+	<!-- for( $i = $pBajo; $i <= $pAlto; $i++ ) { -->
+		<!-- if( $p == $i ) { -->
+		<li class="active"><a>{$i}</a></li>
+		<!-- } else { -->
+		<li><a href="#" onclick="clickPagination( event, {$i} )">{$i}</a></li>
+		<!-- } -->
+	<!-- } -->
+	<!-- if( $p < $pMax ) { -->
+		<li><a href="#" onclick="clickPagination( event, {$p+1} )"><span class="glyphicon glyphicon-arrow-right"></span></a></li>
+	<!-- } -->
+	</ul>
+	<input class="paginacion-hidden" type="hidden" name="p" value="1"/>
+	<button class="paginacion-submit" type="submit" style="display:none;">submit</button>
+</form>
+<!-- } -->
+<script>
+$( document ).ready( function() {
+	window.forks = 0;
+	if( window.File && window.FileList && window.FileReader ) {
+		init( {$_SESSION['id']} );
+	}
+	else {
+		alert( "tu explorador no soporta drag and drop" );
+	}
+	$( window ).on( 'beforeunload', function( event ) {
+		if( window.forks > 0 ) {
+			return 'Al salir se cancelaran las descargas en proceso.';
+		}
+	} );
+} );
+</script>
+<script type="text/javascript" src="d/js/upload.js"></script>

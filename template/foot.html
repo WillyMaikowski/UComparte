@@ -1,0 +1,27 @@
+
+<script>
+$( document ).ready( function() {
+	permalinkHandler();
+	$( '.typeahead' ).typeahead( {
+		name: 'hi',
+		remote: 'ajax.tagAutoComplete?clave=%QUERY'
+	} );
+	$( '.typeahead.input-sm' ).addClass( 'hint-sm' ).siblings( 'input.tt-hint' ).addClass( 'hint-sm' );
+	$( '.typeahead' ).focus();	
+} );
+</script>
+</div> <!-- //container -->
+
+<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-48948903-1']);
+_gaq.push(['_trackPageview']);
+</script>
+<script type="text/javascript" src="https://www.u-cursos.cl/diseno/js/ga.js"></script>
+<script type="text/javascript" src="d/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="d/js/common.js"></script>
+<script type="text/javascript" src="d/js/typeahead.js"></script>
+</div> <!-- //wrap -->
+</body>
+
+</html>

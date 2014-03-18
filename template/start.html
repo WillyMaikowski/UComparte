@@ -1,0 +1,80 @@
+<div class="row">
+	<div class="col-md-2">
+	</div>
+	<div class="col-md-8">
+		<div class="row">
+			<div class="col-md-10 col-md-offset-1">
+				<p>
+					Hola {$_SESSION['nombre1']}! 
+				</p>
+			</div>
+		</div>
+<!-- $i = 1; -->
+<!-- foreach( $_SESSION['cursos']['actuales'] as $k => $v ) { -->
+	<!-- if( $i%3 === 1 ) { -->
+		<div class="row" style="margin-bottom: 20px;">
+	<!-- } -->
+			<div class="col-md-4 pull-left">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<span class="glyphicon glyphicon-list-alt"></span> {$v['nombre']}
+					</div>
+					<div class="panel-body">
+						<table class="table table-condensed table-hover">
+						<tbody>
+	<!-- if( !$archivos_in[$k] ) { -->
+							<tr>
+								<td style="border:none;">No hay archivos aun para el ramo</td>
+							</tr>
+	<!-- } else { -->
+		<!-- foreach( $archivos_in[$k] as $key => $archivo ) { -->
+			<!-- $ultimoPunto = mb_strrpos( $archivo['titulo'], '.' ); -->
+			<!-- $fileName = mb_strlen( mb_substr( $archivo['titulo'], 0, $ultimoPunto ) ) > 18 ? mb_substr( $archivo['titulo'], 0, 18 ).'.'.$archivo['ext']:$archivo['titulo']; -->
+							<tr>
+								<td style="max-width:25px;border:none;">
+									<div class="file-type-icon mini">
+										<span class="corner"></span>
+										<span class="type {$archivo['ext']}">{$archivo['ext']}</span>
+									</div>	
+								</td>
+								<td style="border:none;padding-left:0;">
+									<a href="archivo?id={$archivo['id']}" style="font-size:12px;">{{$fileName}}</a>
+								</td>
+							</tr>
+		<!-- } -->
+	<!-- } -->
+						</tbody>
+						</table>
+						<div class="tags">
+	<!-- foreach( $taglist[$k] as $l => $t ) { -->
+							<span class="label label-info">{{$t}}</span>
+	<!-- } -->
+						</div>
+					</div>
+				</div>
+			</div>
+	<!-- if( $i%3 === 0 || $k+1 == count( $_SESSION['cursos']['actuales'] ) ) { -->
+		</div>
+	<!-- } --> 
+	<!-- $i++; -->
+<!-- } -->
+	</div>
+	<div class="col-md-2" style="border:0px solid lightgrey;">
+		<table class="table table-condensed col-md-offset-1 col-md-8">
+		<thead>
+			<tr>
+				<th colspan="2"><span class="glyphicon glyphicon-tags"></span> Top Tags</th>
+			</tr>
+		</thead>
+		<tbody>
+<!-- foreach( $toptags as $k => $tag ) { -->
+			<tr>
+				<th>{$k+1}</th>
+				<td><a href="busqueda?clave={{$tag['name']}}"><span class="label label-danger">{{$tag['name']}}</span></a></td>
+			</tr>
+<!-- } -->
+		</tbody>
+		</table>
+	</div>
+</div>
+

@@ -1,0 +1,16 @@
+#fileselect {
+	display: none;
+}
+.message_container {
+	position: fixed;
+	top: 75px;;
+	right: 2%;
+	width: 15%;	
+}
+.dragdrop-active {
+	color: #468847 !important;
+	background-color: #dff0d8 !important;
+	border-color: #d6e9c6 !important;
+	font-weight: bold !important;
+}
+

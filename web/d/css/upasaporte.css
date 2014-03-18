@@ -1,0 +1,33 @@
+
+#upasaporte {
+        position: fixed;
+        margin-left: 40%;
+        margin-top: 40%;
+        border: 2px dotted black;
+        padding: 5px;
+        width: 20%;
+        text-align: center;
+}
+
+#upasaporte #mensaje {
+        border: 4px dotted green;
+}
+
+#upasaporte dl{
+}
+
+#upasaporte dl dt {
+}
+
+#upasaporte dl dd {
+}
+
+#upasaporte input.boton {
+}
+
+#upasaporte em {
+}
+
+#upasaporte a {
+}
+

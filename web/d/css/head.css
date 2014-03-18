@@ -1,0 +1,113 @@
+#header_wrap {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	background-image: url( '../images/fondo_celeste.png' );
+	background-color: white;
+	padding-top: 5px;
+	padding-bottom: 2px;
+	z-index: 500;
+}
+header {
+	width: 90%;
+	margin: 0 auto;
+	font-family: "FlamencoInlD";
+        font-size: 1.3em; 
+}
+header ul {
+}
+header li {
+	display: inline-block;
+	list-style: none;
+	vertical-align: middle;
+	margin-left: 20px;
+}
+header a {
+	color: white;
+	text-decoration: none;
+}
+header a:hover {
+	color: white;
+}
+
+#cont_logo {
+	float: left;	
+}
+#logo {
+	background-image: url( '../images/logo_icon.png' );
+	background-repeat: no-repeat;
+	background-size: auto;
+}
+
+#menu_servicios {
+	float: left;
+	padding-left: 1%;
+}
+
+#menu_servicios li ul {
+	display: inline-block;
+	vertical-align: middle;
+}
+#menu_servicios li ul li {
+	display: block;
+	margin: 0;
+	border-right: 1px solid white;
+	padding-right: 5px;
+}
+
+.first {
+	border-bottom: 1px solid white;
+	padding-bottom: 2px;
+	border-radius: 0px 5px 5px 0px;
+}
+.second {
+	border-radius: 0px 5px 5px 0px;
+}
+
+#mouse {
+	background-image: url( '../images/mouse_icon.png' );
+
+}
+
+#teclado {
+	background-image: url( '../images/keyboard_icon.png' );
+}
+#menu_salir {
+	float: right;
+}
+#boton_config {
+	background-image: url( '../images/config_icon.png' );
+	background-repeat: no-repeat;
+        background-size: auto;	
+}
+#boton_salir {
+	background-image: url( '../images/salir_icon.png' );
+        background-repeat: no-repeat;
+        background-size: auto;
+}
+.mini_boton {
+	display: block;
+	width: 35px;
+	height: 35px;
+	cursor: pointer;
+}
+.minimini_boton {
+	display: block;
+	width: 14px;
+	height: 14px;
+	cursor: pointer;
+}
+
+#mass_wrap {
+	width: 100%;
+	position: relative;
+	top: 42px;
+}
+#content_wrap {
+	width: 85%;
+	margin: 30px auto;	
+	color: black;
+	padding-bottom: 5%;
+}
+
